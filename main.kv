@@ -241,3 +241,701 @@ WindowManager:
             halign: "center"
             font_name: "Fonts/ARLRDBD.TTF"
             color: (255/255, 217/255, 59/255, 255/255)
+
+<NumberOfSolarPanelWindow>:
+    on_enter: root.submit_available()
+    canvas.before:
+        Color: 
+            rgba: (17/255,45/255,78/255, 255/255)
+        Rectangle:  
+            pos: self.pos
+            size: self.size
+    name: "NumberOfSolarPanelWindow_page"
+    BoxLayout:
+        spacing: "10dp"
+        padding:20 
+        orientation: "vertical"
+        Button:
+            background_color: (1,1,1,0)
+            size_hint: (0.2,0.2)
+            color: (1,1,1,0.6)
+            font_size: 16
+            text: "< Back"
+            underline: True
+            background_normal: ''
+            on_release: 
+                app.root.current = "second_window"
+                root.manager.transition.direction = "right"
+        Label:
+            text: "Number of Solar Pannels Needed"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.05
+            halign: "center"
+            valign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+
+        Label:
+            text: "How many Watt Peak (WP) is your pannel"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.03
+            valign: "top"
+            halign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+
+        TextInput:
+            id: watt_peak
+            hint_text: "Enter text here"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.045
+            halign: "left"
+            valign: "top"
+            multiline: False
+            size_hint: (1, None)
+            height: 300
+            font_name: "Fonts/ARLRDBD.TTF"
+            input_filter: "int"
+            background_color: (46/255,54/255,59/255,0)
+            foreground_color: (1,1,1,1)
+        RoundedButton5:
+            id: submit_watt
+            text: "Submit"
+            text_size: self.size
+            font_size: self.size[0] * 0.05
+            valign: "center"
+            halign: "center"
+            size: 75, 50
+            size_hint: 1, None 
+            on_press: root.calculate_num_of_solar_panels()
+            disabled: False
+        Label:
+            id: solar_panel_label
+            text: ""
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.05
+            valign: "center"
+            halign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+            color: (255/255, 217/255, 59/255, 255/255)
+        Label:
+            id: expected_load
+            text: ""
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.05
+            valign: "center"
+            halign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+            color: (255/255, 217/255, 59/255, 255/255)
+        
+<RecommendedInverterWindow>:
+    on_enter: root.load_bearing()
+    canvas.before:
+        Color: 
+            rgba: (17/255,45/255,78/255, 255/255)
+        Rectangle:  
+            pos: self.pos
+            size: self.size
+    name: "RecommendedInverterWindow_page"
+    BoxLayout:
+        spacing:10
+        padding:20
+        orientation: "vertical"
+        Button:
+            background_color: (1,1,1,0)
+            size_hint: (0.2,0.2)
+            color: (1,1,1,0.6)
+            font_size: 16
+            text: "< Back"
+            underline: True
+            background_normal: ''
+            pos_hint: {'left': 1, 'top': 1}
+            on_release: 
+                app.root.current = "second_window"
+                root.manager.transition.direction = "right"
+        Label:
+            text: "Recommended Inverter"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.08
+            halign: "center"
+            valign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+            pos_hint: {'center_x':0.5, 'center_y':0.95}
+        Label:
+            id: bearing_load_label
+            text: ""
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.06
+            valign: "center"
+            halign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+            color: (255/255, 217/255, 59/255, 255/255)
+        Label:
+            text: "Inverter Brands"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.08
+            halign: "center"
+            valign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+            pos_hint: {'center_x':0.5, 'center_y':0.25}
+        BoxLayout:
+            spacing: 10
+            padding:20 
+            id: box_layout
+            RoundedButton4:
+                text: "ABB"
+                background_normal: ''
+                text_size: self.size
+                font_size: self.size[0] * 0.25
+                valign: "center"
+                halign: "center"
+                size_hint: 1, None
+                pos_hint: {'center_x':0.5, 'center_y':0.5}
+                on_release: 
+                    app.root.current = "ABB_window"
+                    root.manager.transition.direction = "left"
+
+            RoundedButton4:
+                text: "SMA"
+                text_size: self.size
+                font_size: self.size[0] * 0.25
+                valign: "center"
+                halign: "center"
+                background_normal: ''
+                size_hint: 1, None
+                pos_hint: {'center_x':0.5, 'center_y':0.5}
+                on_release: 
+                    app.root.current = "SMA_window"
+                    root.manager.transition.direction = "left"
+            RoundedButton4:
+                text: "Huawei "
+                background_normal: ''
+                text_size: self.size
+                font_size: self.size[0] * 0.25
+                valign: "center"
+                halign: "center"
+                size_hint: 1, None
+                pos_hint: {'center_x':0.5, 'center_y':0.5}
+                on_release: 
+                    app.root.current = "Huawei_window"
+                    root.manager.transition.direction = "left"
+
+<ABBWindow>:
+    canvas.before:
+        Color: 
+            rgba: (17/255,45/255,78/255, 255/255)
+        Rectangle:  
+            pos: self.pos
+            size: self.size
+    name: "ABB_window"
+    BoxLayout:
+        id: abb_box
+        spacing:10
+        padding:10
+        orientation: "vertical"
+    Button:
+        background_color: (1,1,1,0)
+        size_hint: (0.2,0.2)    
+        color: (1,1,1,0.6)
+        font_size: 16
+        text: "< Back"
+        underline: True
+        background_normal: ''
+        pos_hint: {'left': 1, 'top': 1}
+        on_release: 
+            app.root.current = "RecommendedInverterWindow_page"
+            root.manager.transition.direction = "right"
+    Label:
+        id: mppt_text
+        text: ""
+        background_normal: ''
+        text_size: self.size
+        font_size: self.size[0] * 0.04
+        halign: "center"
+        valign: "center"
+        font_name: "Fonts/ARLRDBD.TTF"
+        pos_hint: {'center_x':0.5, 'center_y':0.7}
+    PhaseSpinner:
+        id: phase_chooser
+        text: "What is the Inteneted Phase?"
+        values: ["Single Phase", "Three Phase"]
+        on_text: root.phase_type(phase_chooser.text)  
+        size_hint: None, None
+        size: 250, 50
+        pos_hint:{'center_x':.5, 'top': .8}
+        option_cls: Factory.get("MySpinnerOption")
+
+<SMAWindow>:
+    canvas.before:
+        Color: 
+            rgba: (17/255,45/255,78/255, 255/255)
+        Rectangle:  
+            pos: self.pos
+            size: self.size
+    name: "SMA_window"
+    Button:
+        background_color: (1,1,1,0)
+        size_hint: (0.2,0.2)    
+        color: (1,1,1,0.6)
+        font_size: 16
+        text: "< Back"
+        underline: True
+        background_normal: ''
+        pos_hint: {'left': 1, 'top': 1}
+        on_release: 
+            app.root.current = "RecommendedInverterWindow_page"
+            root.manager.transition.direction = "right"
+
+    PhaseSpinner:
+        id: phase_chooser_sma
+        text: "What is the Inteneted Phase?"
+        values: ["Single Phase", "Three Phase"]
+        on_text: root.phase_type(phase_chooser_sma.text)  
+        size_hint: None, None
+        size: 250, 50
+        pos_hint:{'center_x':.5, 'top': .8}
+        option_cls: Factory.get("MySpinnerOption")
+    BoxLayout:
+        id: sma_box
+        spacing:10
+        padding:10
+        orientation: "vertical"
+   
+    
+    
+
+<HuaweiWindow>:
+    canvas.before:
+        Color: 
+            rgba: (17/255,45/255,78/255, 255/255)
+        Rectangle:  
+            pos: self.pos
+            size: self.size
+    name: "Huawei_window"
+    BoxLayout:
+        id: huawei_box
+        spacing:10
+        padding:10
+        orientation: "vertical"
+    Button:
+        background_color: (1,1,1,0)
+        size_hint: (0.2,0.2)    
+        color: (1,1,1,0.6)
+        font_size: 16
+        text: "< Back"
+        underline: True
+        background_normal: ''
+        pos_hint: {'left': 1, 'top': 1}
+        on_release: 
+            app.root.current = "RecommendedInverterWindow_page"
+            root.manager.transition.direction = "right"
+    Label:
+        id: mppt_text
+        text: ""
+        background_normal: ''
+        text_size: self.size
+        font_size: self.size[0] * 0.04
+        halign: "center"
+        valign: "center"
+        font_name: "Fonts/ARLRDBD.TTF"
+        pos_hint: {'center_x':0.5, 'center_y':0.7}
+    PhaseSpinner:
+        id: phase_chooser_huawei
+        text: "What is the Inteneted Phase?"
+        values: ["Single Phase", "Three Phase"]
+        on_text: root.phase_type(phase_chooser_huawei.text)  
+        size_hint: None, None
+        size: 250, 50
+        pos_hint:{'center_x':.5, 'top': .8}
+        option_cls: Factory.get("MySpinnerOption")
+    
+
+
+    
+<CircuitBreakerWindow>:
+    on_enter: root.submit_available()
+    canvas.before:
+        Color: 
+            rgba: (17/255,45/255,78/255, 255/255)
+        Rectangle:  
+            pos: self.pos
+            size: self.size
+    name: "CircuitBreakerWindow_page"
+    BoxLayout:
+        spacing: 10
+        padding:20 
+        orientation: "vertical"
+        Button:
+            background_color: (1,1,1,0)
+            size_hint: (0.2,0.2)
+            color: (1,1,1,0.6)
+            font_size: 16
+            text: "< Back"
+            underline: True
+            background_normal: ''
+            on_release: 
+                app.root.current = "second_window"
+                root.manager.transition.direction = "right"
+        Label:
+            text: "Circuit Breaker"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.06
+            halign: "center"
+            valign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+
+        Label:
+            text: "What is the maximum current of your inverter?"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.03
+            valign: "top"
+            halign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+
+        TextInput:
+            id: max_current
+            hint_text: "Enter text here"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.045
+            halign: "left"
+            valign: "top"
+            multiline: False
+            size_hint: (1, None)
+            height: 300
+            font_name: "Fonts/ARLRDBD.TTF"
+            input_filter: "float"
+            background_color: (46/255,54/255,59/255,0)
+            foreground_color: (1,1,1,1)
+        RoundedButton5:
+            id: submit_max_current
+            text: "Submit"
+            text_size: self.size
+            font_size: self.size[0] * 0.06
+            valign: "center"
+            halign: "center"
+            size: 75, 50
+            size_hint: 1, None 
+            on_press: root.calculate_circuit_breaker()
+            disabled: False
+        Label:
+            id: circuit_breaker_value
+            text: ""
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.06
+            valign: "center"
+            halign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+            color: (255/255, 217/255, 59/255, 255/255)
+
+<CrossSectionCablesWindow>:
+    canvas.before:
+        Color: 
+            rgba: (17/255,45/255,78/255, 255/255)
+        Rectangle:  
+            pos: self.pos
+            size: self.size
+    name: "CrossSectionCablesWindow_page"
+    BoxLayout:
+        spacing: 10
+        padding:20 
+        orientation: "vertical"
+        Button:
+            background_color: (1,1,1,0)
+            size_hint: (0.2,0.2)
+            color: (1,1,1,0.6)
+            font_size: 16
+            text: "< Back"
+            underline: True
+            background_normal: ''
+            on_release: 
+                app.root.current = "second_window"
+                root.manager.transition.direction = "right"
+        Label:
+            text: "Cross Section of Cables"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.08
+            halign: "center"
+            valign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+
+        Label:
+            text: "Note: This is only for 2 cores"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.04
+            valign: "top"
+            halign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+
+        BoxLayout:
+            spacing: 10
+            padding: 20
+            RoundedButton4:
+                text: "Underground"
+                background_normal: ''
+                text_size: self.size
+                font_size: self.size[0] * 0.15
+                valign: "center"
+                halign: "center"
+                size_hint: 1, None
+                pos_hint: {'center_x':0.5, 'center_y':0.5}
+                on_press: root.underground()
+
+            RoundedButton4:
+                text: "Free Air"
+                text_size: self.size
+                font_size: self.size[0] * 0.25
+                valign: "center"
+                halign: "center"
+                background_normal: ''
+                size_hint: 1, None
+                pos_hint: {'center_x':0.5, 'center_y':0.5}
+                on_press: root.free_air()
+        Label:
+            id: cross_section_cables_value
+            text: ""
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.06
+            valign: "center"
+            halign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+            color: (255/255, 217/255, 59/255, 255/255)
+
+<ThirdWindow>:
+    canvas.before:
+        Color: 
+            rgba: (17/255,45/255,78/255, 255/255)
+        Rectangle:  
+            pos: self.pos
+            size: self.size
+    name: "third_window"
+    BoxLayout:
+        orientation:"vertical"
+        size: root.width, root.height
+
+        TextInput:
+            id: calc_input
+            text: "0"
+            foreground_color: (1,1,1,1)
+            halign: "right"
+            font_size: 65
+            size_hint: (1, 0.15)
+            background_color: (17/255,45/255,78/255, 255/255)
+
+        GridLayout:
+            cols: 4
+            rows: 5
+            spacing: 20
+            padding:30 
+
+            # Row
+            RoundedButton:
+                id: clear
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "AC"
+                background_normal: ''
+                on_press: root.clear()
+
+            RoundedButton:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "+/−"
+                on_press: root.change_sign()
+            RoundedButton:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "^"
+                on_press: root.math("^")
+            RoundedButton:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "÷"
+                on_press: root.math("÷")
+            # Row
+            RoundedButton2:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "7"
+                on_press: root.button_press(7)
+            RoundedButton2:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "8"
+                on_press: root.button_press(8)
+            RoundedButton2:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "9"
+                on_press: root.button_press(9)
+            RoundedButton:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "×"
+                on_press: root.math("×")
+            # Row
+            RoundedButton2:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "4"
+                on_press: root.button_press(4)
+            RoundedButton2:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "5"
+                on_press: root.button_press(5)
+            RoundedButton2:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "6"
+                on_press: root.button_press(6)
+            RoundedButton:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "−"
+                on_press: root.math("-")
+                
+            # Row
+            RoundedButton2:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "1"
+                on_press: root.button_press(1)
+            RoundedButton2:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "2"
+                on_press: root.button_press(2)
+            RoundedButton2:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "3"
+                on_press: root.button_press(3)
+            RoundedButton:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "+"
+                on_press: root.math("+")
+            # Row
+            RoundedButton2:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "0"
+                on_press: root.button_press(0)
+            RoundedButton2:
+                size_hint: (0.24,0.2)
+                font_size: 32
+                text: "."
+                on_press: root.dec()
+            RoundedButton2:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: u"\u00AB"
+                on_press: 
+                    app.root.current = "second_window"
+                    root.manager.transition.direction = "right"
+            RoundedButton:
+                size_hint: (0.2,0.2)
+                font_size: 32
+                text: "="
+                on_press: root.equate()
+
+<RoundedButton@Button>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba: (255/255, 160/255, 17/255, 255/255)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [20]
+
+<RoundedButton2@Button>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba: (63/255, 114/255, 175/255, 255/255)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [20]
+
+            
+<RoundedButton3@Button>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba: (63/255, 114/255, 175/255, 255/255)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [30]
+            texture:Gradient.vertical(get_color_from_hex("#DBE2EF"), get_color_from_hex("#F9F7F7"))
+<RoundedButton4@Button>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba: (63/255, 114/255, 175/255, 255/255)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [30]
+            texture:Gradient.vertical(get_color_from_hex("#DBE2EF"), get_color_from_hex("#F9F7F7"))
+<RoundedButton5@Button>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba: (63/255, 114/255, 175/255, 255/255)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [30]
+            texture:Gradient.vertical(get_color_from_hex("#F9F7F7"), get_color_from_hex("#DBE2EF"))
+<PhaseSpinner@Spinner>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba: (63/255, 114/255, 175/255, 255/255)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [30]
+            texture:Gradient.vertical(get_color_from_hex("#DBE2EF"), get_color_from_hex("#F9F7F7"))
+            
+
+<MySpinnerOption@SpinnerOption>:
+    background_color: (0,0,0,0)
+    background_normal: ''
+    option_cls: Factory.get("MySpinnerOption")
+    canvas.before:
+        Color:
+            rgba: (63/255, 114/255, 175/255, 255/255)
+
+<MySpinnerOption@SpinnerOption>:
+    background_color: (0,0,0,0)
+    background_normal: ''
+    spacing: 30
+    canvas.before:
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [30]
+            texture:Gradient.vertical(get_color_from_hex("#F9F7F7"), get_color_from_hex("#3F72AF"))
