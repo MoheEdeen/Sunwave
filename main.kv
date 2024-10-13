@@ -5,7 +5,17 @@
 
 WindowManager:
     SplashScreenWindow:
-    SecondWindow:    
+    SecondWindow:
+    ACPWindow:
+    ThirdWindow:
+    NumberOfSolarPanelWindow:
+    RecommendedInverterWindow:
+    CircuitBreakerWindow:
+    CrossSectionCablesWindow:
+    ABBWindow:
+    SMAWindow:
+    HuaweiWindow:
+    
     
 <SplashScreenWindow>:
     canvas.before:
@@ -109,3 +119,125 @@ WindowManager:
                 app.root.current = "third_window"
                 root.manager.transition.direction = "left"
             
+
+<ACPWindow>:
+    canvas.before:
+        Color: 
+            rgba: (17/255,45/255,78/255, 255/255)
+        Rectangle:  
+            pos: self.pos
+            size: self.size
+    name: "annual_consumption_page"
+    BoxLayout:
+        spacing: 10
+        padding:20 
+        id: box_layout
+        orientation: "vertical"
+        Button:
+            background_color: (1,1,1,0)
+            size_hint: (0.2,0.2)
+            color: (1,1,1,0.6)
+            font_size: 16
+            text: "< Back"
+            underline: True
+            background_normal: ''
+            on_release: 
+                app.root.current = "second_window"
+                root.manager.transition.direction = "right"
+        Label:
+            text: "Avg. Annual Electric Consumption"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.04
+            
+            halign: "center"
+            valign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+
+        Label:
+            text: "How many months would you like to average?"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.04
+            valign: "center"
+            halign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+
+        TextInput:
+            id: month_input
+            hint_text: "Enter month number here"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.02
+            halign: "left"
+            multiline: False
+            size_hint: (1, None)
+            height: 30
+            font_name: "Fonts/ARLRDBD.TTF"
+            input_filter: "int"
+            background_color: (46/255,54/255,59/255,0)
+            foreground_color: (1,1,1,1)
+        RoundedButton4:
+            text: "Enter"
+            text_size: self.size
+            font_size: self.size[0] * 0.05
+            valign: "center"
+            halign: "center"
+            size: 75, 50
+            size_hint: 1, None 
+            on_press: root.get_num_of_month()
+        Label:
+            text: "Each month's usage"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.04
+            valign: "center"
+            halign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+        GridLayout:
+            id: months_grid
+            cols: 3
+            rows: 0
+            row_default_height: '28dp'
+            row_force_default: True
+        Label:
+            text: ""
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.05
+            valign: "center"
+            halign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+            
+        RoundedButton5:
+            id: submit_button
+            text: "Submit"
+            text_size: self.size
+            font_size: self.size[0] * 0.05
+            valign: "center"
+            halign: "center"
+            size: 75, 50
+            size_hint: 1, None 
+            on_press: root.average_months()
+            disabled: True
+                
+        Label:
+            id: power_label
+            text: ""
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.04
+            valign: "center"
+            halign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+            color: (255/255, 217/255, 59/255, 255/255)
+        Label:
+            id: average_label
+            text: ""
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.04
+            valign: "center"
+            halign: "center"
+            font_name: "Fonts/ARLRDBD.TTF"
+            color: (255/255, 217/255, 59/255, 255/255)
