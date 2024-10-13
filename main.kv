@@ -5,7 +5,7 @@
 
 WindowManager:
     SplashScreenWindow:
-    
+    SecondWindow:    
     
 <SplashScreenWindow>:
     canvas.before:
@@ -25,3 +25,87 @@ WindowManager:
             pos_hint:{"center_y": 0.3, "center_x": 0.5}
             padding: "10dp"
             size_hint_x: 0.7
+
+    
+<SecondWindow>:
+    canvas.before:
+        Color: 
+            rgba: (17/255,45/255,78/255, 255/255)
+        Rectangle:  
+            pos: self.pos
+            size: self.size
+    name: "second_window"
+    BoxLayout:
+        spacing: 20
+        padding:30 
+        orientation: "vertical"
+        RoundedButton3:
+
+            text: "Avg. Annual Electric Consumption"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.06
+            valign: "center"
+            halign: "center"
+            on_release:
+                app.root.current = "annual_consumption_page"
+                root.manager.transition.direction = "left"
+        RoundedButton3:
+            id: Numofsolarpannels
+            text: "Number of Solar Pannels Needed"
+            text_size: self.size
+            font_size: self.size[0] * 0.06
+            valign: "center"
+            halign: "center"
+            background_normal: ''
+            disabled: True
+            on_release:
+                app.root.current = "NumberOfSolarPanelWindow_page"
+                root.manager.transition.direction = "left"
+        RoundedButton3:
+            id: recommendedinverter
+            text: "Recommended Inverter"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.06
+            valign: "center"
+            halign: "center"
+            disabled: True
+            on_release:
+                app.root.current = "RecommendedInverterWindow_page"
+                root.manager.transition.direction = "left"
+        RoundedButton3:
+            id: circuitbreaker
+            text: "Circuit Breaker"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.06
+            valign: "center"
+            disabled: True
+            halign: "center"
+            on_release:
+                app.root.current = "CircuitBreakerWindow_page"
+                root.manager.transition.direction = "left"
+        RoundedButton3:
+            id: crosssection
+            text: "Cross Section of the Cables"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.06
+            valign: "center"
+            disabled: True
+            halign: "center"
+            on_release:
+                app.root.current = "CrossSectionCablesWindow_page"
+                root.manager.transition.direction = "left"
+        RoundedButton3:
+            text: "Calculator"
+            background_normal: ''
+            text_size: self.size
+            font_size: self.size[0] * 0.06
+            valign: "center"
+            halign: "center"
+            on_release:
+                app.root.current = "third_window"
+                root.manager.transition.direction = "left"
+            
