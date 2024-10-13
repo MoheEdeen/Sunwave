@@ -1,0 +1,27 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Gradient kivy_gradient.Gradient
+#:import Factory kivy.factory.Factory
+
+
+WindowManager:
+    SplashScreenWindow:
+    
+    
+<SplashScreenWindow>:
+    canvas.before:
+        Color: 
+            rgba: (17/255, 45/255, 78/255, 255/255)
+        Rectangle:  
+            pos: self.pos
+            size: self.size
+    name: "splash_screen"
+    FloatLayout:
+        Image:
+            source: "Assets/Sunwave loading screen.gif"
+            allow_stretch: True
+            anim_delay: 0
+            anim_reset: True
+        BoxLayout:
+            pos_hint:{"center_y": 0.3, "center_x": 0.5}
+            padding: "10dp"
+            size_hint_x: 0.7
