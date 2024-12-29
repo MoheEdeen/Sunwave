@@ -1,6 +1,6 @@
 # Sunwave
 
-Sunwave is an application designed to calculate the various aspects needed to install solar panels efficiently. This application provides a user-friendly interface and numerous features to simplify the planning process for solar panel installations. It is built using the Python Kivy library.
+Sunwave is an mobile application designed to calculate the various aspects needed to install solar panels efficiently. This application provides a user-friendly interface and numerous features to simplify the planning process for solar panel installations. It is built using the Python Kivy library.
 
 ## Features
 
