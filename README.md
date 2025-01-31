@@ -53,9 +53,3 @@ This project is **not open source** and is provided for **personal use only**. B
 
 3. **Attribution**:
    - If you reference or share the project, you must provide clear attribution to the author.
-
-## Images:
-![SW1](https://github.com/user-attachments/assets/0d2b27e2-185f-4501-b2e8-9cb91e85e5c8)
-![SW2](https://github.com/user-attachments/assets/ebc49bf7-426b-4b04-a0f9-4a0e424a3bce)
-![SW3](https://github.com/user-attachments/assets/ebcf05a1-cab2-4b9c-9f2f-23bc4f882e3d)
-![SW4](https://github.com/user-attachments/assets/0c50ef95-e4bd-40f2-af38-e2b7662e896b)
