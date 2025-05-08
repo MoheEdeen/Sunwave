@@ -19,7 +19,7 @@ The application uses the Python Kivy library and other dependencies listed in `r
 
 ## Installation and Usage
 
-1. Clone the repository or download the source code.
+1. Clone the repository or download the source code
 2. Install the required libraries by running:
 
    ```bash
